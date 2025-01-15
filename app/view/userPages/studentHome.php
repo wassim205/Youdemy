@@ -26,7 +26,7 @@
                     <span class="px-2 py-1 bg-indigo-100 text-indigo-800 text-xs rounded-full">Development</span>
                 </div>
                 <h3 class="text-xl font-bold mb-2"><?php echo $course['title'] ?></h3>
-                <p class="text-gray-600 mb-4 line-clamp-2">Learn web development from scratch with HTML, CSS, JavaScript, and more.</p>
+                <p class="text-gray-600 mb-4 line-clamp-2"><?php echo $course['description'] ?></p>
                 <div class="flex items-center justify-between">
                     <div class="flex items-center space-x-2">
                         <img src="/api/placeholder/32/32" alt="Instructor" class="w-8 h-8 rounded-full">
@@ -42,28 +42,6 @@
         </div>
         <?php endforeach; ?>
 
-        <!-- Additional Course Cards (Repeated for demonstration) -->
-        <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-            <img src="https://imgs.search.brave.com/3pbWOMtMLfrbdsrHaoT5lmhJ3PMGP3MQZ_D7iAyoLDI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jYW1w/dXMudzNzY2hvb2xz/LmNvbS9jZG4vc2hv/cC9maWxlcy9jb2Rp/bmctb24tbGFwdG9w/XzE1MDB4MTAwMS5q/cGc_dj0xNjU0NjA3/MzI4" alt="Course thumbnail" class="w-full h-48 object-cover">
-            <div class="p-6">
-                <div class="flex items-center space-x-2 mb-2">
-                    <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Business</span>
-                </div>
-                <h3 class="text-xl font-bold mb-2">Business Strategy Masterclass</h3>
-                <p class="text-gray-600 mb-4 line-clamp-2">Master the art of business strategy and management.</p>
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center space-x-2">
-                        <img src="/api/placeholder/32/32" alt="Instructor" class="w-8 h-8 rounded-full">
-                        <span class="text-sm text-gray-600">Jane Smith</span>
-                    </div>
-                    <div class="flex items-center space-x-4">
-                        <a href="login.html" class="bg-white text-indigo-600 px-6 py-2 rounded-lg font-semibold hover:bg-indigo-50 transition-colors">
-                            Enroll
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <!-- Pagination -->
