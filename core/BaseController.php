@@ -7,20 +7,22 @@ class BaseController
     {
         
         extract($data);
-        include __DIR__ . '/../app/views/' . $view . '.php';
+        include __DIR__ . '/../app/view/' . $view . '.php';
     }
-    public function renderClient($view, $data = [])
-    {
+
+    
+    // public function renderClient($view, $data = [])
+    // {
         
-        extract($data);
-        include __DIR__ . '/../app/views/client/' . $view . '.php';
-    }
-    public function renderAdmin($view, $data = [])
-    {
+    //     extract($data);
+    //     include __DIR__ . '/../app/views/client/' . $view . '.php';
+    // }
+    // public function renderAdmin($view, $data = [])
+    // {
         
-        extract($data);
-        include __DIR__ . '/../app/views/admin/' . $view . '.php';
-    }
+    //     extract($data);
+    //     include __DIR__ . '/../app/views/admin/' . $view . '.php';
+    // }
    
    
 }
