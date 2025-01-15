@@ -20,6 +20,8 @@ Route::get("/login", [AuthController::class, "login"]);
 Route::post("/login", [AuthController::class, "handleLogin"]);
 Route::get("/Youdemy/Student", [AuthController::class, "student"]);
 Route::get("/logout", [AuthController::class, "logout"]);
+Route::get("/MyCourses", [UserController::class, "showMyCourses"]);
+
 
 
 // Dispatch the request

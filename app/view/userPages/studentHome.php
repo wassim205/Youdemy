@@ -31,9 +31,10 @@
                         <img src="/api/placeholder/32/32" alt="Instructor" class="w-8 h-8 rounded-full">
                         <span class="text-sm text-gray-600">John Doe</span>
                     </div>
-                    <div class="flex items-center space-x-1 text-yellow-400">
-                        <i class="fas fa-star"></i>
-                        <span class="text-gray-600">4.8</span>
+                    <div class="flex items-center space-x-4">
+                        <a href="#" class="bg-white text-indigo-600 px-6 py-2 rounded-lg font-semibold hover:bg-indigo-50 transition-colors">
+                            Enroll
+                        </a>
                     </div>
                 </div>
             </div>
@@ -53,9 +54,10 @@
                         <img src="/api/placeholder/32/32" alt="Instructor" class="w-8 h-8 rounded-full">
                         <span class="text-sm text-gray-600">Jane Smith</span>
                     </div>
-                    <div class="flex items-center space-x-1 text-yellow-400">
-                        <i class="fas fa-star"></i>
-                        <span class="text-gray-600">4.9</span>
+                    <div class="flex items-center space-x-4">
+                        <a href="login.html" class="bg-white text-indigo-600 px-6 py-2 rounded-lg font-semibold hover:bg-indigo-50 transition-colors">
+                            Enroll
+                        </a>
                     </div>
                 </div>
             </div>

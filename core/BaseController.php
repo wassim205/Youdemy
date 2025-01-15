@@ -11,12 +11,12 @@ class BaseController
     }
 
     
-    // public function renderClient($view, $data = [])
-    // {
+    public function renderClient($view, $data = [])
+    {
         
-    //     extract($data);
-    //     include __DIR__ . '/../app/views/client/' . $view . '.php';
-    // }
+        extract($data);
+        include __DIR__ . '/../app/views/userPages/' . $view . '.php';
+    }
     // public function renderAdmin($view, $data = [])
     // {
         
