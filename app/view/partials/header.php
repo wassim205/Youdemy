@@ -30,10 +30,10 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-6">
                     <?php if ($_SERVER["REQUEST_URI"] == "/MyCourses"): ?>
                         <a href="/Youdemy/Student" class="hover:text-indigo-200 flex items-center space-x-1">
-                            <i class="fas fa-graduation-cap"></i>
+                        <i class="fa-solid fa-house"></i>
                             <span>Home</span>
                         </a>
                     <?php elseif ($_SERVER["REQUEST_URI"] == "/Youdemy/Student"): ?>

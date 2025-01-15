@@ -53,7 +53,7 @@ class AuthController extends BaseController
             if (isset($_POST['login'])) {
                 $email = $_POST['email'];
                 $password = $_POST['password'];
-                $userData = ["email" => $email,"password" => $password];
+                $userData = ["email" => $email, "password" => $password];
 
 
                 $user = $this->UserModel->login($userData);
@@ -78,6 +78,7 @@ class AuthController extends BaseController
 
     public function student()
     {
+        
         $this->render('userPages/studentHome');
     }
 
