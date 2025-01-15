@@ -11,17 +11,17 @@ class BaseController
     }
 
     
-    // public function renderClient($view, $data = [])
-    // {
+    public function renderStudent($view, $data = [])
+    {
         
-    //     extract($data);
-    //     include __DIR__ . '/../app/views/client/' . $view . '.php';
-    // }
+        extract($data);
+        include __DIR__ . '/../app/view/userPages/' . $view . '.php';
+    }
     // public function renderAdmin($view, $data = [])
     // {
         
     //     extract($data);
-    //     include __DIR__ . '/../app/views/admin/' . $view . '.php';
+    //     include __DIR__ . '/../app/view/admin/' . $view . '.php';
     // }
    
    

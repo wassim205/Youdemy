@@ -1,4 +1,4 @@
-<?php include __DIR__ . "/../partials/header.php" ?>
+<?php include __DIR__ . "/../partials/header.php"; ?>
 
 <!-- Main Content -->
 <main class="max-w-7xl mx-auto px-4 py-8">
@@ -18,26 +18,29 @@
     <!-- Course Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Course Card -->
+         <?php foreach ($courses as $course): ?>
         <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
             <img src="https://imgs.search.brave.com/EGqm4HJm7tNfNqNsYcEvAr0_fIb-EdneZ77mYaObBzE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/c2N1LmVkdS9tZWRp/YS9tb2JpL3Nlc3Np/b24taW1hZ2VzLWFu/ZC1zY3JlZW5zaG90/cy9NQUItNTAweDUw/MC5wbmc" alt="Course thumbnail" class="w-full h-48 object-cover">
             <div class="p-6">
                 <div class="flex items-center space-x-2 mb-2">
                     <span class="px-2 py-1 bg-indigo-100 text-indigo-800 text-xs rounded-full">Development</span>
                 </div>
-                <h3 class="text-xl font-bold mb-2">Complete Web Development Course</h3>
+                <h3 class="text-xl font-bold mb-2"><?php echo $course['title'] ?></h3>
                 <p class="text-gray-600 mb-4 line-clamp-2">Learn web development from scratch with HTML, CSS, JavaScript, and more.</p>
                 <div class="flex items-center justify-between">
                     <div class="flex items-center space-x-2">
                         <img src="/api/placeholder/32/32" alt="Instructor" class="w-8 h-8 rounded-full">
                         <span class="text-sm text-gray-600">John Doe</span>
                     </div>
-                    <div class="flex items-center space-x-1 text-yellow-400">
-                        <i class="fas fa-star"></i>
-                        <span class="text-gray-600">4.8</span>
+                    <div class="flex items-center space-x-4">
+                        <a href="#" class="bg-white text-indigo-600 px-6 py-2 rounded-lg font-semibold hover:bg-indigo-50 transition-colors">
+                            Enroll
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
+        <?php endforeach; ?>
 
         <!-- Additional Course Cards (Repeated for demonstration) -->
         <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
@@ -53,9 +56,10 @@
                         <img src="/api/placeholder/32/32" alt="Instructor" class="w-8 h-8 rounded-full">
                         <span class="text-sm text-gray-600">Jane Smith</span>
                     </div>
-                    <div class="flex items-center space-x-1 text-yellow-400">
-                        <i class="fas fa-star"></i>
-                        <span class="text-gray-600">4.9</span>
+                    <div class="flex items-center space-x-4">
+                        <a href="login.html" class="bg-white text-indigo-600 px-6 py-2 rounded-lg font-semibold hover:bg-indigo-50 transition-colors">
+                            Enroll
+                        </a>
                     </div>
                 </div>
             </div>

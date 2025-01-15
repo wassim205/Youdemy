@@ -8,6 +8,7 @@ require_once '../core/Router.php';
 require_once '../core/Route.php';
 require_once '../app/controller/AuthController.php';
 require_once '../app/controller/UsersController.php';
+require_once '../app/controller/CoursesController.php';
 
 
 $router = new Router();
@@ -19,7 +20,10 @@ Route::post("/signup", [AuthController::class, "signup"]);
 Route::get("/login", [AuthController::class, "login"]);
 Route::post("/login", [AuthController::class, "handleLogin"]);
 Route::get("/Youdemy/Student", [AuthController::class, "student"]);
+Route::get("/Youdemy/Student", [CoursesController::class, "showAllCourses"]);
 Route::get("/logout", [AuthController::class, "logout"]);
+Route::get("/MyCourses", [UserController::class, "showMyCourses"]);
+
 
 
 // Dispatch the request

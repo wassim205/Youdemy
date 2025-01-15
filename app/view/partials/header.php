@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-gray-50 min-h-screen">
     <!-- Navigation -->
     <nav class="bg-indigo-600 text-white shadow-lg">
@@ -21,18 +23,25 @@
                 <!-- Search Bar -->
                 <div class="hidden md:block flex-1 max-w-xl mx-4">
                     <div class="relative">
-                        <input type="text" placeholder="Search for courses..." 
-                               class="w-full px-4 py-2 pl-10 pr-8 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-400">
+                        <input type="text" placeholder="Search for courses..."
+                            class="w-full px-4 py-2 pl-10 pr-8 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-400">
                         <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
                     </div>
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="flex items-center space-x-4">
-                    <a href="#" class="hover:text-indigo-200 flex items-center space-x-1">
-                        <i class="fas fa-graduation-cap"></i>
-                        <span>My Courses</span>
-                    </a>
+                <div class="flex items-center space-x-6">
+                    <?php if ($_SERVER["REQUEST_URI"] == "/MyCourses"): ?>
+                        <a href="/Youdemy/Student" class="hover:text-indigo-200 flex items-center space-x-1">
+                        <i class="fa-solid fa-house"></i>
+                            <span>Home</span>
+                        </a>
+                    <?php elseif ($_SERVER["REQUEST_URI"] == "/Youdemy/Student"): ?>
+                        <a href="/MyCourses" class="hover:text-indigo-200 flex items-center space-x-1">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>My Courses</span>
+                        </a>
+                    <?php endif; ?>
                     <div class="relative group">
                         <button class="flex items-center space-x-1 hover:text-indigo-200">
                             <i class="fas fa-user-circle text-xl"></i>
