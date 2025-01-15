@@ -17,7 +17,9 @@ Route::setRouter($router);
 Route::get("/signup", [AuthController::class, "displaySignupPage"]);
 Route::post("/signup", [AuthController::class, "signup"]);
 Route::get("/login", [AuthController::class, "login"]);
+Route::post("/login", [AuthController::class, "handleLogin"]);
 Route::get("/Youdemy/Student", [AuthController::class, "student"]);
+Route::get("/logout", [AuthController::class, "logout"]);
 
 
 // Dispatch the request

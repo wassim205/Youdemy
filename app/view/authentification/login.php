@@ -26,11 +26,11 @@
             <!-- Login Form -->
             <div id="loginForm" class="p-6">
                 <h2 class="text-2xl font-bold text-center text-gray-800 mb-8">Welcome Back!</h2>
-                <form class="space-y-4">
+                <form class="space-y-4" method="post">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
                         <div class="relative">
-                            <input type="email"
+                            <input type="email" name="email"
                                 class="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
                                 placeholder="Enter your email">
                             <i
@@ -40,13 +40,13 @@
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
                         <div class="relative">
-                            <input type="password"
+                            <input type="password" name="password"
                                 class="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
                                 placeholder="Enter your password">
                             <i class="fas fa-lock absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
                         </div>
                     </div>
-                    <button type="submit"
+                    <button type="submit" name="login"
                         class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition-colors flex items-center justify-center space-x-2">
                         <span>Login</span>
                         <i class="fas fa-arrow-right text-sm"></i>
@@ -55,7 +55,7 @@
                 <div class="mt-6 text-center">
                     <p class="text-sm text-gray-600">
                         Don't have an account?
-                        <a href="signup.html"
+                        <a href="signup"
                             class="ml-1 text-indigo-600 hover:text-indigo-800 font-medium flex items-center justify-center space-x-1 mx-auto mt-1">
                             <span>Sign Up</span>
                             <i class="fas fa-chevron-right text-sm"></i>

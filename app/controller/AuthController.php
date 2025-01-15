@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '/../model/User.php');
+require_once __DIR__ . '/../model/User.php';
 class AuthController extends BaseController
 {
 
@@ -29,7 +29,6 @@ class AuthController extends BaseController
                 $user = $this->UserModel->signup($userData);
 
                 if ($user) {
-                    // $role = $user['role'];
                     $_SESSION['user_loged_in_role'] = $role;
                     $_SESSION['user_loged_in_name'] = $username;
                     if ($user && $role == 'student') {
@@ -47,6 +46,36 @@ class AuthController extends BaseController
     {
         $this->render('authentification/login');
     }
+
+    public function handleLogin()
+    {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (isset($_POST['login'])) {
+                $email = $_POST['email'];
+                $password = $_POST['password'];
+                $userData = ["email" => $email,"password" => $password];
+
+
+                $user = $this->UserModel->login($userData);
+
+                if ($user) {
+                    $role = $user['role'];
+                    $_SESSION['user_loged_in_role'] = $role;
+                    $_SESSION['user_loged_in_name'] = $user['name'];
+                    if ($user && $role == 'student') {
+                        header('Location: /Youdemy/Student');
+                    } elseif ($user && $role == 'teacher') {
+                        header('Location: /Youdemy/Teacher');
+                    }
+                } else {
+                    $this->render('authentification/login', ['error' => 'Invalid email or password']);
+                }
+            }
+        }
+    }
+
+
+
     public function student()
     {
         $this->render('userPages/studentHome');
@@ -55,9 +84,8 @@ class AuthController extends BaseController
     public function logout()
     {
 
-        if (isset($_SESSION['user_loged_in_id']) && isset($_SESSION['user_loged_in_role'])) {
-            unset($_SESSION['user_loged_in_id']);
-            unset($_SESSION['user_loged_in_role']);
+        if (isset($_SESSION['user_loged_in_role'])) {
+            session_unset();
             session_destroy();
 
             header("Location: /login");
