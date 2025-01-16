@@ -24,5 +24,14 @@ class Course extends Db
         return $result['total'];
     }
 
+    public function searchCourses($query, $limit, $offset)
+{
+    $query = "%$query%";
+    $stmt = $this->conn->prepare("SELECT * FROM courses WHERE title LIKE :query OR description LIKE :query LIMIT $limit OFFSET $offset");
+    $stmt->bindParam(':query', $query);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
 
 }

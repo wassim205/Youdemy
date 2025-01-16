@@ -38,4 +38,18 @@ class CoursesController extends BaseController
         $paginationData = $this->paginateCourses(3, $page);
         $this->renderStudent('studentHome', ['courses' => $paginationData['courses'], 'paginationData' => $paginationData]);
     }
+
+    public function searchCoursesAjax()
+{
+    $query = $_GET['query'];
+    $courses = $this->CourseModel->searchCourses($query, 100, 0); // Fetch matching courses
+
+    $response = [
+        'courses' => $courses,
+        'user_role' => isset($_SESSION["user_loged_in_role"]) ? $_SESSION["user_loged_in_role"] : null,
+    ];
+
+    echo json_encode($response);
+    exit;
+}
 }

@@ -26,7 +26,7 @@ Route::get("/Youdemy/Student/MyCourses", [UserController::class, "showMyCourses"
 
 Route::get("/Youdemy/Student?{page}", [AuthController::class, "index"]);
 Route::get("/Youdemy/Student?{page}", [CoursesController::class, "showAllCourses"]);
-
+Route::get("/search-ajax", [CoursesController::class, "searchCoursesAjax"]);
 
 // Dispatch the request
 $router->dispatch($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
