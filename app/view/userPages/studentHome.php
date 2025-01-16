@@ -1,4 +1,6 @@
-<?php include __DIR__ . "/../partials/header.php"; ?>
+<?php include __DIR__ . "/../partials/header.php";
+
+?>
 
 <!-- Main Content -->
 <main class="max-w-7xl mx-auto px-4 py-8">
@@ -32,11 +34,19 @@
                         <img src="/api/placeholder/32/32" alt="Instructor" class="w-8 h-8 rounded-full">
                         <span class="text-sm text-gray-600">John Doe</span>
                     </div>
+                    <?php if(!empty($_SESSION)): ?>
                     <div class="flex items-center space-x-4">
                         <a href="#" class="bg-white text-indigo-600 px-6 py-2 rounded-lg font-semibold hover:bg-indigo-50 transition-colors">
                             Enroll
                         </a>
                     </div>
+                    <?php else : ?>
+                        <div class="flex items-center space-x-4">
+                        <a href="login" class="bg-red-50 text-red-600 px-6 py-2 rounded-lg font-semibold hover:bg-red-100 transition-colors">
+                            Log In First
+                        </a>
+                    </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
