@@ -31,52 +31,55 @@
 
                 <!-- Navigation Links -->
                 <div class="flex items-center space-x-6">
-                    <?php if ($_SERVER["REQUEST_URI"] == "/MyCourses"): ?>
+                    <?php if ($_SERVER["REQUEST_URI"] == "/Youdemy/Student/MyCourses"): ?>
                         <a href="/Youdemy/Student" class="hover:text-indigo-200 flex items-center space-x-1">
                             <i class="fa-solid fa-house"></i>
                             <span>Home</span>
                         </a>
-                    <?php elseif ($_SERVER["REQUEST_URI"] == "/Youdemy/Student"): ?>
-                        <a href="/MyCourses" class="hover:text-indigo-200 flex items-center space-x-1">
+                    <?php elseif ($_SESSION["user_loged_in_role"] == "student"): ?>
+
+                        <a href="/Youdemy/Student/MyCourses" class="hover:text-indigo-200 flex items-center space-x-1">
                             <i class="fas fa-graduation-cap"></i>
                             <span>My Courses</span>
                         </a>
                     <?php endif; ?>
-                    <div class="relative group" id="dropdown">
-                        <button class="flex items-center space-x-1 hover:text-indigo-200">
-                            <i class="fas fa-user-circle text-xl"></i>
-                            <span>Account</span>
-                        </button>
-                        <!-- Dropdown Menu -->
-                        <?php if (!empty($_SESSION)) : ?>
-                            <div class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 dropdownGroup hidden">
-                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-indigo-50">Profile</a>
-                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-indigo-50">Settings</a>
-                                <hr class="my-2">
-                                <a href="logout" class="block px-4 py-2 text-red-600 hover:bg-red-50">Logout</a>
-                            </div>
-                        <?php else : ?>
+                    <?php if ($_SERVER['REQUEST_URI'] == "/" || $_SESSION["user_loged_in_role"] != "student"): ?>
+                        <div class="relative group" id="dropdown">
+                            <button class="flex items-center space-x-1 hover:text-indigo-200">
+                                <i class="fas fa-user-circle text-xl"></i>
+                                <span>Account</span>
+                            </button>
+                            <!-- Dropdown Menu -->
+
                             <div class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 dropdownGroup hidden">
 
                                 <a href="login" class="block px-4 py-2 text-green-800 hover:bg-green-50">Log in</a>
                                 <hr class="my-2">
                                 <a href="signup" class="block px-4 py-2 text-red-600 hover:bg-red-50">Sign Up</a>
+
                             </div>
-                        <?php endif; ?>
-                    </div>
+                        </div>
+                    <?php elseif ($_SESSION["user_loged_in_role"] == "student") : ?>
+                        <div class="relative group" id="dropdownStudent">
+                            <button class="flex items-center space-x-1 hover:text-indigo-200">
+                                <i class="fas fa-user-circle text-xl"></i>
+                                <span>Account</span>
+                            </button>
+                            <!-- Dropdown Menu -->
+                            <div class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2  dropdownGroupStudent hidden">
+
+                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-indigo-50">Profile</a>
+                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-indigo-50">Settings</a>
+                                <hr class="my-2">
+                                <a href="logout" class="block px-4 py-2 text-red-600 hover:bg-red-50">Logout</a>
+
+                            </div>
+                        </div>
+                    <?php endif; ?>
                 </div>
+
             </div>
         </div>
     </nav>
 
-    <script>
-        const dropdown = document.getElementById('dropdown');
-        dropdown.addEventListener('click', () => {
-            const dropdownMenu = dropdown.querySelector('.dropdownGroup');
-            if (dropdownMenu.classList.contains('hidden')) {
-                dropdownMenu.classList.remove('hidden');
-            } else {
-                dropdownMenu.classList.add('hidden');
-            }
-        });
-    </script>
+    <script src="/assets/js/Dropdown.js"></script>

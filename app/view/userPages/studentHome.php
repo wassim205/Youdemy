@@ -18,53 +18,49 @@
     </div>
 
     <!-- Course Grid -->
+    <!-- Course Card -->
+
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Course Card -->
-         <?php foreach ($courses as $course): ?>
-        <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-            <img src="https://imgs.search.brave.com/EGqm4HJm7tNfNqNsYcEvAr0_fIb-EdneZ77mYaObBzE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/c2N1LmVkdS9tZWRp/YS9tb2JpL3Nlc3Np/b24taW1hZ2VzLWFu/ZC1zY3JlZW5zaG90/cy9NQUItNTAweDUw/MC5wbmc" alt="Course thumbnail" class="w-full h-48 object-cover">
-            <div class="p-6">
-                <div class="flex items-center space-x-2 mb-2">
-                    <span class="px-2 py-1 bg-indigo-100 text-indigo-800 text-xs rounded-full">Development</span>
-                </div>
-                <h3 class="text-xl font-bold mb-2"><?php echo $course['title'] ?></h3>
-                <p class="text-gray-600 mb-4 line-clamp-2"><?php echo $course['description'] ?></p>
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center space-x-2">
-                        <img src="/api/placeholder/32/32" alt="Instructor" class="w-8 h-8 rounded-full">
-                        <span class="text-sm text-gray-600">John Doe</span>
+        <?php foreach ($courses as $course): ?>
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                <img src="https://imgs.search.brave.com/EGqm4HJm7tNfNqNsYcEvAr0_fIb-EdneZ77mYaObBzE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/c2N1LmVkdS9tZWRp/YS9tb2JpL3Nlc3Np/b24taW1hZ2VzLWFu/ZC1zY3JlZW5zaG90/cy9NQUItNTAweDUw/MC5wbmc" alt="Course thumbnail" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex items-center space-x-2 mb-2">
+                        <span class="px-2 py-1 bg-indigo-100 text-indigo-800 text-xs rounded-full">Development</span>
                     </div>
-                    <?php if(!empty($_SESSION)): ?>
-                    <div class="flex items-center space-x-4">
-                        <a href="#" class="bg-white text-indigo-600 px-6 py-2 rounded-lg font-semibold hover:bg-indigo-50 transition-colors">
-                            Enroll
-                        </a>
+                    <h3 class="text-xl font-bold mb-2"><?php echo $course['title'] ?></h3>
+                    <p class="text-gray-600 mb-4 line-clamp-2"><?php echo $course['description'] ?></p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <img src="/api/placeholder/32/32" alt="Instructor" class="w-8 h-8 rounded-full">
+                            <span class="text-sm text-gray-600">John Doe</span>
+                        </div>
+                        <?php if ( $_SESSION["user_loged_in_role"] == "student"): ?>
+                            <div class="flex items-center space-x-4">
+                                <a href="#" class="bg-white text-indigo-600 px-6 py-2 rounded-lg font-semibold hover:bg-indigo-50 transition-colors">
+                                    Enroll
+                                </a>
+                            </div>
+                        <?php else : ?>
+                            <div class="flex items-center space-x-4">
+                                <a href="login" class="bg-red-50 text-red-600 px-6 py-2 rounded-lg font-semibold hover:bg-red-100 transition-colors">
+                                    Log In First
+                                </a>
+                            </div>
+                        <?php endif; ?>
                     </div>
-                    <?php else : ?>
-                        <div class="flex items-center space-x-4">
-                        <a href="login" class="bg-red-50 text-red-600 px-6 py-2 rounded-lg font-semibold hover:bg-red-100 transition-colors">
-                            Log In First
-                        </a>
-                    </div>
-                    <?php endif; ?>
                 </div>
             </div>
-        </div>
         <?php endforeach; ?>
-
     </div>
 
     <!-- Pagination -->
     <div class="flex justify-center mt-8 space-x-2">
-        <button class="px-4 py-2 border rounded-lg hover:bg-gray-50">
-            <i class="fas fa-chevron-left"></i>
-        </button>
-        <button class="px-4 py-2 border rounded-lg bg-indigo-600 text-white">1</button>
-        <button class="px-4 py-2 border rounded-lg hover:bg-gray-50">2</button>
-        <button class="px-4 py-2 border rounded-lg hover:bg-gray-50">3</button>
-        <button class="px-4 py-2 border rounded-lg hover:bg-gray-50">
-            <i class="fas fa-chevron-right"></i>
-        </button>
+        <?php for ($i = 1; $i <= $paginationData['totalPages']; $i++) : ?>
+            <a href="?page=<?= $i ?>" class="px-4 py-2 border rounded-lg hover:bg-gray-50 <?= $paginationData['currentPage'] == $i ? 'bg-indigo-600 text-white' : '' ?>">
+                <?= $i ?>
+            </a>
+        <?php endfor; ?>
     </div>
 </main>
 </body>

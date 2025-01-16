@@ -1,3 +1,6 @@
+<?php session_unset();
+session_destroy(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,6 +31,11 @@
                 <h2 class="text-2xl font-bold text-center text-gray-800 mb-8">Welcome Back!</h2>
                 <form class="space-y-4" method="post">
                     <div>
+                        <?php if (isset($error)) : ?>
+                            <p class="text-red-500 text-center"><?= $error ?></p>
+                            <?php endif; ?>
+                    </div>
+                    <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
                         <div class="relative">
                             <input type="email" name="email"
@@ -52,15 +60,27 @@
                         <i class="fas fa-arrow-right text-sm"></i>
                     </button>
                 </form>
-                <div class="mt-6 text-center">
-                    <p class="text-sm text-gray-600">
-                        Don't have an account?
-                        <a href="signup"
-                            class="ml-1 text-indigo-600 hover:text-indigo-800 font-medium flex items-center justify-center space-x-1 mx-auto mt-1">
-                            <span>Sign Up</span>
-                            <i class="fas fa-chevron-right text-sm"></i>
-                        </a>
-                    </p>
+                <div class="flex justify-evenly">
+                    <div class="mt-6 text-center">
+                        <p class="text-sm text-gray-600">
+                            Don't have an account?
+                            <a href="signup"
+                                class="ml-1 text-indigo-600 hover:text-indigo-800 font-medium flex items-center justify-center space-x-1 mx-auto mt-1">
+                                <span>Sign Up</span>
+                                <i class="fas fa-chevron-right text-sm"></i>
+                            </a>
+                        </p>
+                    </div>
+                    <div class="mt-6 text-center">
+                        <p class="text-sm text-gray-600">
+                            Visite Us As Guest
+                            <a href="/"
+                                class="ml-1 text-indigo-600 hover:text-indigo-800 font-medium flex items-center justify-center space-x-1 mx-auto mt-1">
+                                <span>Enter As A Guest</span>
+                                <i class="fas fa-chevron-right text-sm"></i>
+                            </a>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
