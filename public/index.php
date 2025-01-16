@@ -9,6 +9,7 @@ require_once '../core/Route.php';
 require_once '../app/controller/AuthController.php';
 require_once '../app/controller/UsersController.php';
 require_once '../app/controller/CoursesController.php';
+require_once '../app/controller/TeacherController.php';
 
 
 $router = new Router();
@@ -27,6 +28,7 @@ Route::get("/Youdemy/Student/MyCourses", [UserController::class, "showMyCourses"
 Route::get("/Youdemy/Student?{page}", [AuthController::class, "index"]);
 Route::get("/Youdemy/Student?{page}", [CoursesController::class, "showAllCourses"]);
 Route::get("/search-ajax", [CoursesController::class, "searchCoursesAjax"]);
+Route::get("/Youdemy/Teacher", [TeacherController::class, "teacher"]);
 
 // Dispatch the request
 $router->dispatch($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
