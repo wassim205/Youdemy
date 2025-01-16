@@ -90,15 +90,27 @@
                         <i class="fas fa-arrow-right text-sm"></i>
                     </button>
                 </form>
-                <div class="mt-6 text-center">
-                    <p class="text-sm text-gray-600">
-                        Already have an account?
-                        <a href="login"
-                            class="ml-1 text-indigo-600 hover:text-indigo-800 font-medium flex items-center justify-center space-x-1 mx-auto mt-1">
-                            <span>Login</span>
-                            <i class="fas fa-chevron-right text-sm"></i>
-                        </a>
-                    </p>
+                <div class="flex justify-evenly">
+                    <div class="mt-6 text-center">
+                        <p class="text-sm text-gray-600">
+                            Already have an account?
+                            <a href="login"
+                                class="ml-1 text-indigo-600 hover:text-indigo-800 font-medium flex items-center justify-center space-x-1 mx-auto mt-1">
+                                <span>Login</span>
+                                <i class="fas fa-chevron-right text-sm"></i>
+                            </a>
+                        </p>
+                    </div>
+                    <div class="mt-6 text-center">
+                        <p class="text-sm text-gray-600">
+                            Visite Us As Guest
+                            <a href="/"
+                                class="ml-1 text-indigo-600 hover:text-indigo-800 font-medium flex items-center justify-center space-x-1 mx-auto mt-1">
+                                <span>Enter As A Guest</span>
+                                <i class="fas fa-chevron-right text-sm"></i>
+                            </a>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>

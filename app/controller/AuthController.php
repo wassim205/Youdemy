@@ -32,7 +32,7 @@ class AuthController extends BaseController
                     $_SESSION['user_loged_in_role'] = $role;
                     $_SESSION['user_loged_in_name'] = $username;
                     if ($user && $role == 'student') {
-                        header('Location: /Youdemy/Student');
+                        header('Location: /');
                     } elseif ($user && $role == 'teacher') {
                         header('Location: /Youdemy/Teacher');
                     }
@@ -60,10 +60,11 @@ class AuthController extends BaseController
 
                 if ($user) {
                     $role = $user['role'];
+                    $_SESSION['user_loged_in_id'] = $user['id'];
                     $_SESSION['user_loged_in_role'] = $role;
-                    $_SESSION['user_loged_in_name'] = $user['name'];
+                    $_SESSION['user_loged_in_name'] = $user['firstname'] . ' ' . $user['lastname'];
                     if ($user && $role == 'student') {
-                        header('Location: /Youdemy/Student');
+                        header('Location: /');
                     } elseif ($user && $role == 'teacher') {
                         header('Location: /Youdemy/Teacher');
                     }
@@ -76,7 +77,7 @@ class AuthController extends BaseController
 
 
 
-    public function student()
+    public function index()
     {
         
         $this->render('userPages/studentHome');
