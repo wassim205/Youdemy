@@ -44,7 +44,10 @@ class AuthController extends BaseController
     }
     public function login()
     {
-        $this->render('authentification/login');
+
+        $error = isset($_GET['error']) ? $_GET['error'] : null;
+        $this->render('authentification/login', ['error' => $error]);
+
     }
 
     public function handleLogin()
@@ -64,7 +67,7 @@ class AuthController extends BaseController
                     $_SESSION['user_loged_in_role'] = $role;
                     $_SESSION['user_loged_in_name'] = $user['firstname'] . ' ' . $user['lastname'];
                     if ($user && $role == 'student') {
-                        header('Location: /');
+                        header('Location: /Youdemy/Student?page=1');
                     } elseif ($user && $role == 'teacher') {
                         header('Location: /Youdemy/Teacher');
                     }

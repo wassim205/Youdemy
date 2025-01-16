@@ -8,13 +8,30 @@ class Course extends Db
         parent::__construct();
     }
 
-    public function getcourses(){
-        $query = "SELECT * FROM courses";
+    public function getcourses($limit, $offset = 0){
+        $query = "SELECT * FROM courses LIMIT $limit OFFSET $offset";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
-        $course = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $course;
+        $courses = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $courses;
     }
+
+    public function getTotalCourses() {
+        $query = "SELECT COUNT(*) as total FROM courses";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['total'];
+    }
+
+    public function searchCourses($query, $limit, $offset)
+{
+    $query = "%$query%";
+    $stmt = $this->conn->prepare("SELECT * FROM courses WHERE title LIKE :query OR description LIKE :query LIMIT $limit OFFSET $offset");
+    $stmt->bindParam(':query', $query);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 
 
 }
