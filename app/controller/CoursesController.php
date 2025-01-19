@@ -93,4 +93,11 @@ class CoursesController extends BaseController
             exit;
         }
     }
+
+    public function deleteCourse(){
+        $id = $_GET['id'];
+        $this->CourseModel->deleteCourse($id);
+        header('Location: /Youdemy/Teacher');
+        exit;
+    }
 }
