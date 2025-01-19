@@ -1,6 +1,9 @@
 <?php include __DIR__ . "/../partials/header.php";
-
+if ($_SERVER['REQUEST_URI'] != "/" && $_SESSION['user_loged_in_role'] != 'teacher') {
+    header("Location: /");
+    }
 ?>
+
 
 <!-- Main Content -->
 <main class="max-w-7xl mx-auto px-4 py-8">
@@ -9,22 +12,22 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="bg-white/20 rounded-lg p-6">
                 <h3 class="text-lg font-semibold mb-2">Total Students</h3>
-                <p class="text-3xl font-bold">1,234</p>
+                <p class="text-3xl font-bold"><?= $studentsEnrolled ?></p>
             </div>
             <div class="bg-white/20 rounded-lg p-6">
                 <h3 class="text-lg font-semibold mb-2">Active Courses</h3>
-                <p class="text-3xl font-bold">12</p>
+                <p class="text-3xl font-bold"><?= $activeCourses ?></p>
             </div>
             <div class="bg-white/20 rounded-lg p-6">
                 <h3 class="text-lg font-semibold mb-2">Total Engagements</h3>
-                <p class="text-3xl font-bold">5,678</p>
+                <p class="text-3xl font-bold"><?= $totalEngagements ?></p>
             </div>
         </div>
     </div>
 
     <!-- Action Buttons -->
     <div class="flex space-x-4 mb-8">
-        <a href="#" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors flex items-center">
+        <a href="/AddCourse" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors flex items-center">
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
             </svg>

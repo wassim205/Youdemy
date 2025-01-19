@@ -45,7 +45,8 @@
                         <?php endif; ?>
                     <?php endif; ?>
 
-                    <?php if (!isset($_SESSION["user_loged_in_role"]) || $_SESSION["user_loged_in_role"] != "student"): ?>
+                    <?php if (
+                        empty($_SESSION) || $_SESSION["user_loged_in_role"] != "student" && $_SESSION["user_loged_in_role"] != "teacher"): ?>
                         <div class="relative group" id="dropdown">
                             <button class="flex items-center space-x-1 hover:text-indigo-200">
                                 <i class="fas fa-user-circle text-xl"></i>

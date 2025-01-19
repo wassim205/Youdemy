@@ -20,7 +20,8 @@ class CoursesController extends BaseController
         $this->CourseModel = new Course();
     }
 
-    public function paginateCourses($limit = 3, $page = 1) {
+    public function paginateCourses($limit = 3, $page = 1)
+    {
         $offset = ($page - 1) * $limit;
         $courses = $this->CourseModel->getcourses($limit, $offset);
         $totalCourses = $this->CourseModel->getTotalCourses();
@@ -40,16 +41,16 @@ class CoursesController extends BaseController
     }
 
     public function searchCoursesAjax()
-{
-    $query = $_GET['query'];
-    $courses = $this->CourseModel->searchCourses($query, 100, 0); // Fetch matching courses
+    {
+        $query = $_GET['query'];
+        $courses = $this->CourseModel->searchCourses($query, 100, 0); // Fetch matching courses
 
-    $response = [
-        'courses' => $courses,
-        'user_role' => isset($_SESSION["user_loged_in_role"]) ? $_SESSION["user_loged_in_role"] : null,
-    ];
+        $response = [
+            'courses' => $courses,
+            'user_role' => isset($_SESSION["user_loged_in_role"]) ? $_SESSION["user_loged_in_role"] : null,
+        ];
 
-    echo json_encode($response);
-    exit;
-}
+        echo json_encode($response);
+        exit;
+    }
 }
