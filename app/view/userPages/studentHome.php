@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_URI'] != "/" && $_SESSION['user_loged_in_role'] != 'studen
             <h1 class="text-4xl font-bold mb-4">Welcome to Youdemy</h1>
             <p class="text-xl text-indigo-100 mb-6">Discover your potential with our extensive collection of courses. Start learning today and transform your future.</p>
             <div class="flex items-center space-x-4">
-                <a href="login.html" class="bg-white text-indigo-600 px-6 py-2 rounded-lg font-semibold hover:bg-indigo-50 transition-colors">
+                <a href="/login" class="bg-white text-indigo-600 px-6 py-2 rounded-lg font-semibold hover:bg-indigo-50 transition-colors">
                     Get Started
                 </a>
             </div>

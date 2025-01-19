@@ -44,4 +44,18 @@ class Course extends Db
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+
+    public function create($title, $description, $teacherId, $categoryId)
+    {
+        $sql = "INSERT INTO courses (title, description, teacher_id, category_id) VALUES (?, ?, ?, ?)";
+        $params = [
+            $title,
+            $description,
+            $teacherId,
+            $categoryId
+        ];
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute($params);
+        return $this->conn->lastInsertId();
+    }
 }

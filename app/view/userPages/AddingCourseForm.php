@@ -9,7 +9,7 @@
         </div>
 
         <!-- Course Creation Form -->
-        <form class="bg-white rounded-xl shadow-md p-8">
+        <form action="/Youdemy/Teacher" method="post" class="bg-white rounded-xl shadow-md p-8">
             <!-- Basic Information -->
             <div class="space-y-6">
                 <!-- Course Title -->
@@ -29,14 +29,14 @@
                 <!-- Content Type -->
                 <div>
                     <label class="block text-sm font-medium text-gray-700">Content Type</label>
-                    <div class="mt-2 space-x-4">
+                    <div class="mt-2 space-x-4" name="type">
                         <label class="inline-flex items-center">
                             <input type="radio" name="content_type" value="video" class="form-radio text-indigo-600 border-2 border-gray-400">
                             <span class="ml-2">Video</span>
                         </label>
                         <label class="inline-flex items-center">
-                            <input type="radio" name="content_type" value="pdf" class="form-radio text-indigo-600 border-2 border-gray-400">
-                            <span class="ml-2">PDF</span>
+                            <input type="radio" name="content_type" value="document" class="form-radio text-indigo-600 border-2 border-gray-400">
+                            <span class="ml-2">Document</span>
                         </label>
                     </div>
                 </div>
@@ -46,45 +46,25 @@
                     <label for="category" class="block text-sm font-medium text-gray-700">Category</label>
                     <select id="category" name="category" required
                         class="mt-1 block w-full rounded-md border border-gray-400 p-2 focus:border-indigo-500 focus:ring-indigo-500 bg-white">
-                        <option value="">Select a category</option>
-                        <option value="frontend">Frontend Development</option>
-                        <option value="backend">Backend Development</option>
-                        <option value="fullstack">Full Stack Development</option>
-                        <option value="mobile">Mobile Development</option>
-                        <option value="devops">DevOps</option>
+                        <option value="1">PHP</option>
                     </select>
+                </div>
+                <div>
+                    <label for="cdn" class="block text-sm font-medium text-gray-700">Link</label>
+                    <input type="text" id="cdn" name="cdn"
+                        class="mt-1 block w-full rounded-md border border-gray-400 p-2 focus:border-indigo-500 focus:ring-indigo-500" />
+
                 </div>
 
                 <!-- Course Tags -->
-                <div>
+                <!-- <div>
                     <label for="tags" class="block text-sm font-medium text-gray-700">Tags (comma-separated)</label>
                     <input type="text" name="tags" id="tags" placeholder="e.g., JavaScript, React, Web Development"
                         class="mt-1 block w-full rounded-md border border-gray-400 p-2 focus:border-indigo-500 focus:ring-indigo-500">
-                </div>
-
-                <!-- Additional Fields -->
-                <div class="grid grid-cols-2 gap-6">
-                    <!-- Duration -->
-                    <div>
-                        <label for="duration" class="block text-sm font-medium text-gray-700">Course Duration (hours)</label>
-                        <input type="number" name="duration" id="duration" min="1"
-                            class="mt-1 block w-full rounded-md border border-gray-400 p-2 focus:border-indigo-500 focus:ring-indigo-500">
-                    </div>
-                    
-                    <!-- Difficulty Level -->
-                    <div>
-                        <label for="difficulty" class="block text-sm font-medium text-gray-700">Difficulty Level</label>
-                        <select id="difficulty" name="difficulty"
-                            class="mt-1 block w-full rounded-md border border-gray-400 p-2 focus:border-indigo-500 focus:ring-indigo-500 bg-white">
-                            <option value="beginner">Beginner</option>
-                            <option value="intermediate">Intermediate</option>
-                            <option value="advanced">Advanced</option>
-                        </select>
-                    </div>
-                </div>
+                </div> -->
 
                 <!-- Course Thumbnail -->
-                <div>
+                <!-- <div>
                     <label class="block text-sm font-medium text-gray-700">Course Thumbnail</label>
                     <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-400 border-dashed rounded-md">
                         <div class="space-y-1 text-center">
@@ -100,7 +80,7 @@
                             <p class="text-xs text-gray-500">PNG, JPG, GIF</p>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
 
             <!-- Form Actions -->
@@ -108,11 +88,13 @@
                 <button type="button" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-400 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Cancel
                 </button>
-                <button type="submit" class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <button name="create" type="submit" class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Create Course
                 </button>
             </div>
         </form>
     </main>
+    <pre>
+    <?php var_dump($_GET); ?></pre>
 </body>
 </html>
