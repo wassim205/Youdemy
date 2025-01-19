@@ -30,7 +30,7 @@ Route::get("/Youdemy/Student?{page}", [CoursesController::class, "showAllCourses
 Route::get("/search-ajax", [CoursesController::class, "searchCoursesAjax"]);
 Route::get("/Youdemy/Teacher", [TeacherController::class, "teacher"]);
 Route::get("/AddCourse", [TeacherController::class, "AddingCourse"]);
-
+Route::post("/Youdemy/Teacher", [CoursesController::class, "createCourse"]);
 // Dispatch the request
 $router->dispatch($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
 

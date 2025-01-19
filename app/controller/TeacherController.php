@@ -20,6 +20,7 @@ class TeacherController extends BaseController
             header('Location: /');
             exit;
         }
+
         $displayMyCourses = $this->CoursesModel->teacherCourses();
         $studentsEnrolled = $this->TeacherModel->countStudents();
         $activeCourses = $this->TeacherModel->activeCourses();

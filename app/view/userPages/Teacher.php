@@ -2,6 +2,7 @@
 if ($_SERVER['REQUEST_URI'] != "/" && $_SESSION['user_loged_in_role'] != 'teacher') {
     header("Location: /");
     }
+
 ?>
 
 

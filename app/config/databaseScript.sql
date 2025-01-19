@@ -1,3 +1,7 @@
+
+CREATE DATABASE youdemy;
+USE youdemy;
+
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(255) NOT NULL,
@@ -12,7 +16,7 @@ CREATE TABLE users (
 
 
 
-
+²
 CREATE TABLE categories (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) UNIQUE NOT NULL
@@ -23,7 +27,6 @@ CREATE TABLE courses (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
-    content TEXT,
     teacher_id INT,
     category_id INT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -57,6 +60,30 @@ CREATE TABLE enrollments (
     FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
 );
 
+CREATE TABLE contents (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    course_id INT NOT NULL,
+    type ENUM('video', 'document') NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
+);
+
+CREATE TABLE videoContent (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    content_id INT NOT NULL,
+    video_url VARCHAR(255) NOT NULL,
+    video_duration INT,
+    FOREIGN KEY (content_id) REFERENCES contents(id) ON DELETE CASCADE
+);
+
+CREATE TABLE documentContent (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    content_id INT NOT NULL,
+    file_path VARCHAR(255) NOT NULL,
+    file_size VARCHAR(255) NOT NULL,
+    FOREIGN KEY (content_id) REFERENCES contents(id) ON DELETE CASCADE
+);
+
 
 INSERT INTO users (username, email, password, role, first_name, last_name)
 VALUES 
@@ -77,13 +104,15 @@ VALUES
 ('Design');
 
 
-INSERT INTO courses (title, description, content, teacher_id, category_id) 
+
+INSERT INTO courses (title, description, teacher_id, category_id) 
 VALUES 
-('Introduction to HTML & CSS', 'Learn the basics of HTML and CSS to build websites.', 'HTML and CSS fundamentals.', 4, 1),
-('JavaScript Basics', 'Understand the basics of JavaScript programming language.', 'Introduction to JavaScript concepts.', 4, 1),
-('Python for Data Analysis', 'Learn how to use Python for data analysis with real-world examples.', 'Python libraries and data manipulation.', 5, 2),
-('Machine Learning with Python', 'Understand the fundamentals of machine learning using Python.', 'Supervised and unsupervised learning.', 5, 3),
-('Business Strategy', 'Master the strategies behind business development and management.', 'Marketing, business models, and strategy.', 4, 4);
+('Introduction to HTML & CSS', 'Learn the basics of HTML and CSS to build websites.', 4, 1),
+('JavaScript Basics', 'Understand the basics of JavaScript programming language.', 4, 1),
+('Python for Data Analysis', 'Learn how to use Python for data analysis with real-world examples.', 5, 2),
+('Machine Learning with Python', 'Understand the fundamentals of machine learning using Python.', 5, 3),
+('Business Strategy', 'Master the strategies behind business development and management.', 4, 4);
+
 
 
 
