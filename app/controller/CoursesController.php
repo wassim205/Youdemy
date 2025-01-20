@@ -22,7 +22,7 @@ class CoursesController extends BaseController
         $this->CourseModel = new Course();
     }
 
-    public function paginateCourses($limit = 3, $page = 1)
+    public function paginateCourses($limit = 6, $page = 1)
     {
         $offset = ($page - 1) * $limit;
         $courses = $this->CourseModel->getcourses($limit, $offset);
@@ -38,7 +38,7 @@ class CoursesController extends BaseController
     public function showAllCourses()
     {
         $page = isset($_GET['page']) ? $_GET['page'] : 1;
-        $paginationData = $this->paginateCourses(3, $page);
+        $paginationData = $this->paginateCourses(6, $page);
         $this->renderStudent('studentHome', ['courses' => $paginationData['courses'], 'paginationData' => $paginationData]);
     }
 
@@ -100,4 +100,11 @@ class CoursesController extends BaseController
         header('Location: /Youdemy/Teacher');
         exit;
     }
+
+    public function coursDetails()
+{
+    $courseId = $_GET['course_id'];
+    $course = $this->CourseModel->getCourseDetails($courseId);
+    $this->renderStudent('coursDetails', ['course' => $course]);
+}
 }

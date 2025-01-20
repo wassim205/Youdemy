@@ -26,20 +26,32 @@ if ($_SERVER['REQUEST_URI'] != "/" && $_SESSION['user_loged_in_role'] != 'studen
                 <img src="https://imgs.search.brave.com/EGqm4HJm7tNfNqNsYcEvAr0_fIb-EdneZ77mYaObBzE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/c2N1LmVkdS9tZWRp/YS9tb2JpL3Nlc3Np/b24taW1hZ2VzLWFu/ZC1zY3JlZW5zaG90/cy9NQUItNTAweDUw/MC5wbmc" alt="Course thumbnail" class="w-full h-48 object-cover">
                 <div class="p-6">
                     <div class="flex items-center space-x-2 mb-2">
-                        <span class="px-2 py-1 bg-indigo-100 text-indigo-800 text-xs rounded-full">Development</span>
+                        <span class="px-2 py-1 bg-indigo-100 text-indigo-800 text-xs rounded-full"><?php echo $course['category_name'] ?></span>
+
+                        <span class="px-2 py-1 bg-indigo-100 text-indigo-800 text-xs rounded-full"><?php echo $course['tags'] ?></span>
                     </div>
                     <h3 class="text-xl font-bold mb-2"><?php echo $course['title'] ?></h3>
                     <p class="text-gray-600 mb-4 line-clamp-2"><?php echo $course['description'] ?></p>
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-2">
                             <img src="/api/placeholder/32/32" alt="Instructor" class="w-8 h-8 rounded-full">
-                            <span class="text-sm text-gray-600">John Doe</span>
+                            <span class="text-sm text-gray-600"><?php echo $course['first_name'] . ' ' . $course['last_name'] ?></span>
                         </div>
                         <?php if (isset($_SESSION["user_loged_in_role"]) && $_SESSION["user_loged_in_role"] == "student"): ?>
                             <div class="flex items-center space-x-4">
-                                <a href="#" class="bg-white text-indigo-600 px-6 py-2 rounded-lg font-semibold hover:bg-indigo-50 transition-colors">
-                                    Enroll
-                                </a>
+                                <?php if ($course['enrollment_status'] === null): ?>
+                                    <a href="/Enroll?course_id=<?php echo $course['id'] ?>" class="bg-white text-indigo-600 px-6 py-2 rounded-lg font-semibold hover:bg-indigo-50 transition-colors">
+                                        Enroll
+                                    </a>
+                                <?php elseif ($course['enrollment_status'] === 'pending'): ?>
+                                    <button class="bg-orange-100 text-orange-800 px-6 py-2 rounded-lg font-semibold" disabled>
+                                        Pending
+                                    </button>
+                                <?php elseif ($course['enrollment_status'] === 'enrolled'): ?>
+                                    <a href="/Youdemy/Student/CourseDetails?course_id=<?php echo $course['id'] ?>" class="bg-green-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-green-600 transition-colors">
+                                        Enter To Course
+                                    </a>
+                                <?php endif; ?>
                             </div>
                         <?php else: ?>
                             <div class="flex items-center space-x-4">

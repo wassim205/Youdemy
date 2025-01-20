@@ -20,6 +20,8 @@
                     <span class="text-xl font-bold">Youdemy</span>
                 </div>
 
+                <?php if (isset($_SESSION["user_loged_in_role"]) && $_SESSION["user_loged_in_role"] === "student"): ?>
+                        
                 <!-- Search Bar -->
                 <div class="hidden md:block flex-1 max-w-xl mx-4">
                     <div class="relative">
@@ -28,6 +30,7 @@
                         <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
                     </div>
                 </div>
+                <?php endif; ?>
 
                 <!-- Navigation Links -->
                 <div class="flex items-center space-x-6">

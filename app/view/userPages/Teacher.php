@@ -90,6 +90,7 @@ if ($_SERVER['REQUEST_URI'] != "/" && $_SESSION['user_loged_in_role'] != 'teache
         <?php endforeach; ?>
     </div>
 </main>
+
 </body>
 
 </html>

@@ -14,6 +14,7 @@ class TeacherController extends BaseController
         $this->CoursesModel = new Course();
     }
 
+
     public function teacher()
     {
 

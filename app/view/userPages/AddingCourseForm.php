@@ -53,7 +53,6 @@
                     <label for="cdn" class="block text-sm font-medium text-gray-700">Link</label>
                     <input type="text" id="cdn" name="cdn"
                         class="mt-1 block w-full rounded-md border border-gray-400 p-2 focus:border-indigo-500 focus:ring-indigo-500" />
-
                 </div>
 
                 <!-- Course Tags -->
@@ -85,16 +84,14 @@
 
             <!-- Form Actions -->
             <div class="mt-8 flex justify-end space-x-4">
-                <button type="button" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-400 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <a href="/Youdemy/Teacher" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-400 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Cancel
-                </button>
+                </a>
                 <button name="create" type="submit" class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Create Course
                 </button>
             </div>
         </form>
     </main>
-    <pre>
-    <?php var_dump($_GET); ?></pre>
 </body>
 </html>
