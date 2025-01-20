@@ -11,6 +11,7 @@ require_once '../app/controller/UsersController.php';
 require_once '../app/controller/CoursesController.php';
 require_once '../app/controller/TeacherController.php';
 require_once '../app/controller/EnrollmentController.php';
+require_once '../app/controller/AdminController.php';
 
 
 $router = new Router();
@@ -40,6 +41,12 @@ Route::get("/Enroll", [EnrollmentController::class, "Enrolling"]);
 Route::get("/Youdemy/Student/CourseDetails?{course_id}", [CoursesController::class, "coursDetails"]);
 
 
+Route::get("/Youdemy/Admin", [AdminController::class, "handleAdmin"]);
+Route::post("/Youdemy/Admin", [AdminController::class, "handleAdmin"]);
+Route::get("/Youdemy/Admin/Delete?{CategoryId}", [AdminController::class, "deleteCategory"]);
+Route::get("/Youdemy/Admin/Delete?{TagId}", [AdminController::class, "deleteTag"]);
+Route::get("/Youdemy/Admin/Delete?{TeacherId}", [AdminController::class, "deleteTeacher"]);
+Route::get("/Youdemy/Admin/Delete?{StudentId}", [AdminController::class, "deleteStudent"]);
 
 
 

@@ -36,7 +36,9 @@ class TeacherController extends BaseController
             header('Location: /');
             exit;
         }
-        $this->render('userPages/AddingCourseForm');
+
+        $categories = $this->TeacherModel->getCategories();
+        $this->render('userPages/AddingCourseForm', ['categories' => $categories]);
     }
     public function statistics()
     {

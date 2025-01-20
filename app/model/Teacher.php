@@ -71,6 +71,14 @@ public function updateStatus($studentId, $courseId)
     $stmt->execute();
 }
 
+public function getCategories()
+    {
+        $query = "SELECT * FROM categories";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
    
 
 }

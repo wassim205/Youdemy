@@ -70,6 +70,8 @@ class AuthController extends BaseController
                         header('Location: /Youdemy/Student?page=1');
                     } elseif ($user && $role == 'teacher') {
                         header('Location: /Youdemy/Teacher');
+                    } elseif ($user && $role == 'admin') {
+                        header('Location: /Youdemy/Admin');
                     }
                 } else {
                     $this->render('authentification/login', ['error' => 'Invalid email or password']);
