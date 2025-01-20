@@ -56,6 +56,7 @@ CREATE TABLE enrollments (
     student_id INT,
     course_id INT,
     enrollment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    status VARCHAR(255),
     FOREIGN KEY (student_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
 );

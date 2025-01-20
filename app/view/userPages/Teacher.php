@@ -42,13 +42,13 @@ if ($_SERVER['REQUEST_URI'] != "/" && $_SESSION['user_loged_in_role'] != 'teache
     <div class="mb-8">
         <div class="border-b border-gray-200">
             <nav class="-mb-px flex space-x-8">
-                <a href="#" class="border-indigo-600 text-indigo-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium">
+                <a href="/Youdemy/Teacher" class="border-indigo-600 text-indigo-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium">
                     My Courses
                 </a>
-                <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 whitespace-nowrap py-4 px-1 border-b-2 font-medium">
+                <a href="/Youdemy/Teacher/statistics" class="border-transparent text-gray-500 hover:text-gray-700 whitespace-nowrap py-4 px-1 border-b-2 font-medium">
                     Statistics
                 </a>
-                <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 whitespace-nowrap py-4 px-1 border-b-2 font-medium">
+                <a href="/Youdemy/Teacher/StudentManagement" class="border-transparent text-gray-500 hover:text-gray-700 whitespace-nowrap py-4 px-1 border-b-2 font-medium">
                     Student Management
                 </a>
             </nav>
