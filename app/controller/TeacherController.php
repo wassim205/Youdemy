@@ -14,6 +14,7 @@ class TeacherController extends BaseController
         $this->CoursesModel = new Course();
     }
 
+
     public function teacher()
     {
 
@@ -44,11 +45,11 @@ class TeacherController extends BaseController
         $activeCourses = $this->TeacherModel->activeCourses();
         $totalEngagements = $this->TeacherModel->countEngagements();
         $enrolledStudentsForCourses = [];
-    
+
         foreach ($displayMyCourses as $course) {
             $enrolledStudentsForCourses[$course['id']] = $this->TeacherModel->countStudentsForEachCourse($course['id']);
         }
-    
+
         $this->render('userPages/statistics', [
             'studentsEnrolled' => $studentsEnrolled,
             'activeCourses' => $activeCourses,
@@ -59,16 +60,22 @@ class TeacherController extends BaseController
     }
 
     public function StudentManagement()
+    {
+        $teacherId = $_SESSION['user_loged_in_id'];
+        $studentsEnrolled = $this->TeacherModel->countStudents();
+        $activeCourses = $this->TeacherModel->activeCourses();
+        $totalEngagements = $this->TeacherModel->countEngagements();
+        $enrolleStatus = $this->TeacherModel->getEnrolleStatus($teacherId);
+
+        $this->render('userPages/StudentManagement', ['studentsEnrolled' => $studentsEnrolled, 'activeCourses' => $activeCourses, 'totalEngagements' => $totalEngagements, 'enrolleStatus' => $enrolleStatus]);
+    }
+
+    public function updateStatus()
 {
-    
-    $studentsEnrolled = $this->TeacherModel->countStudents();
-    $activeCourses = $this->TeacherModel->activeCourses();
-    $totalEngagements = $this->TeacherModel->countEngagements();
-    $enrolleStatus = $this->TeacherModel->getEnrolleStatus();
-
-    $this->render('userPages/StudentManagement', ['studentsEnrolled' => $studentsEnrolled, 'activeCourses' => $activeCourses, 'totalEngagements' => $totalEngagements, 'enrolleStatus' => $enrolleStatus]);
-
-
+    $studentId = $_GET['student_id'];
+    $courseId = $_GET['course_id'];
+    $this->TeacherModel->updateStatus($studentId, $courseId);
+    header('Location: /Youdemy/Teacher/StudentManagement');
 }
 }
 ?>

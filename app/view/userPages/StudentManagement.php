@@ -94,8 +94,7 @@
                                 </span>
                             </td>
                             <td class="px-6 py-4">
-                                <a href="Youdemy/Teacher/update-status?student_id=2&status=enrolled"
-                                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-green-500 rounded-lg hover:bg-green-600 focus:ring-4 focus:ring-green-200 transition-colors">
+                                  <a href="/Youdemy/Teacher/update-status?student_id=<?php echo $student['id'] ?>&course_id=<?php echo $student['course_id'] ?>" class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-green-500 rounded-lg hover:bg-green-600 focus:ring-4 focus:ring-green-200 transition-colors">
                                     Enroll
                                 </a>
                             </td>

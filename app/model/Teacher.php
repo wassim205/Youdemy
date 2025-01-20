@@ -45,17 +45,31 @@ class Teacher extends Db
         return $result;
     }
 
-    public function getEnrolleStatus(){
-        $query = "SELECT users.username, users.id, users.first_name, users.last_name , enrollments.status, courses.title from users LEFT JOIN enrollments ON users.id = enrollments.student_id LEFT JOIN courses ON enrollments.course_id = courses.id WHERE users.role != 'admin' AND users.role != 'teacher'";
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute();
-        $result = $stmt->fetchAll();
-        return $result;
-    }
+    public function getEnrolleStatus($teacherId)
+{
+    $query = "SELECT users.username, users.id, users.first_name, users.last_name , enrollments.status, courses.title, courses.id 
+    as course_id
+    FROM users 
+    LEFT JOIN enrollments ON users.id = enrollments.student_id
+    LEFT JOIN courses ON enrollments.course_id = courses.id
+    WHERE courses.teacher_id = :teacher_id AND users.role != 'admin' AND users.role != 'teacher'";
+    $stmt = $this->conn->prepare($query);
+    $stmt->bindParam(':teacher_id', $teacherId);
+    $stmt->execute();
+    $result = $stmt->fetchAll();
+    return $result;
+}
 
-    public function updateStatus(){
-        
-    }
+public function updateStatus($studentId, $courseId)
+{
+    $query = "UPDATE enrollments 
+              SET enrollments.status = 'enrolled' 
+              WHERE enrollments.student_id = :student_id AND enrollments.course_id = :course_id";
+    $stmt = $this->conn->prepare($query);
+    $stmt->bindParam(':student_id', $studentId);
+    $stmt->bindParam(':course_id', $courseId);
+    $stmt->execute();
+}
 
    
 
