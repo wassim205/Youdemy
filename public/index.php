@@ -32,6 +32,8 @@ Route::get("/Youdemy/Teacher", [TeacherController::class, "teacher"]);
 Route::get("/AddCourse", [TeacherController::class, "AddingCourse"]);
 Route::post("/Youdemy/Teacher", [CoursesController::class, "createCourse"]);
 Route::get("/Youdemy/Teacher/DeleteCourse?{id}", [CoursesController::class, "deleteCourse"]);
+Route::get("/Youdemy/Teacher/statistics", [TeacherController::class, "statistics"]);
+Route::get("/Youdemy/Teacher/StudentManagement", [TeacherController::class, "studentManagement"]);
 
 
 

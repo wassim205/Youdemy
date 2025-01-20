@@ -36,8 +36,8 @@ class Course extends Db
     }
 
     public function teacherCourses()
-{
-    $query = "SELECT 
+    {
+        $query = "SELECT 
         courses.*,
         categories.name AS category_name,
         GROUP_CONCAT(tags.name) AS tags
@@ -47,19 +47,20 @@ class Course extends Db
     LEFT JOIN tags ON course_tags.tag_id = tags.id
     WHERE teacher_id = ?
     GROUP BY courses.id";
-    
-    $stmt = $this->conn->prepare($query);
-    $stmt->execute([$_SESSION['user_loged_in_id']]);
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    return $result;
-}
 
-public function deleteCourse($id){
-    $query = "DELETE FROM courses WHERE id = :id";
-    $stmt = $this->conn->prepare($query);
-    $stmt->bindParam(':id', $id);
-    $stmt->execute();
-}
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([$_SESSION['user_loged_in_id']]);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    public function deleteCourse($id)
+    {
+        $query = "DELETE FROM courses WHERE id = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+    }
 
     public function create($title, $description, $teacherId, $categoryId)
     {

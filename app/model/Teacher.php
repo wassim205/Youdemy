@@ -16,6 +16,17 @@ class Teacher extends Db
         $result = $stmt->fetchColumn();
         return $result;
     }
+    public function countStudentsForEachCourse($courseId)
+    {
+        $query = "SELECT COUNT(enrollments.student_id) 
+                  FROM enrollments 
+                  WHERE enrollments.course_id = :course_id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':course_id', $courseId);
+        $stmt->execute();
+        $result = $stmt->fetchColumn();
+        return $result;
+    }
 
     public function activeCourses(){
         $user_id = $_SESSION['user_loged_in_id'];
@@ -33,5 +44,19 @@ class Teacher extends Db
         $result = $stmt->fetchColumn();
         return $result;
     }
+
+    public function getEnrolleStatus(){
+        $query = "SELECT users.username, users.id, users.first_name, users.last_name , enrollments.status, courses.title from users LEFT JOIN enrollments ON users.id = enrollments.student_id LEFT JOIN courses ON enrollments.course_id = courses.id WHERE users.role != 'admin' AND users.role != 'teacher'";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
+    public function updateStatus(){
+        
+    }
+
+   
 
 }

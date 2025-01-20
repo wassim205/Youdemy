@@ -13,8 +13,9 @@ class TeacherController extends BaseController
         $this->TeacherModel = new Teacher();
         $this->CoursesModel = new Course();
     }
-    
-    public function teacher(){
+
+    public function teacher()
+    {
 
         if (!isset($_SESSION['user_loged_in_id'])) {
             header('Location: /');
@@ -25,17 +26,49 @@ class TeacherController extends BaseController
         $studentsEnrolled = $this->TeacherModel->countStudents();
         $activeCourses = $this->TeacherModel->activeCourses();
         $totalEngagements = $this->TeacherModel->countEngagements();
-        $this->render('userPages/Teacher',['studentsEnrolled' => $studentsEnrolled , 'activeCourses' => $activeCourses, 'totalEngagements' => $totalEngagements, 'displayMyCourses' => $displayMyCourses]);
+        $this->render('userPages/Teacher', ['studentsEnrolled' => $studentsEnrolled, 'activeCourses' => $activeCourses, 'totalEngagements' => $totalEngagements, 'displayMyCourses' => $displayMyCourses]);
     }
 
-    public function AddingCourse(){
+    public function AddingCourse()
+    {
         if (!isset($_SESSION['user_loged_in_id'])) {
             header('Location: /');
             exit;
-            }
-            $this->render('userPages/AddingCourseForm');
+        }
+        $this->render('userPages/AddingCourseForm');
+    }
+    public function statistics()
+    {
+        $displayMyCourses = $this->CoursesModel->teacherCourses();
+        $studentsEnrolled = $this->TeacherModel->countStudents();
+        $activeCourses = $this->TeacherModel->activeCourses();
+        $totalEngagements = $this->TeacherModel->countEngagements();
+        $enrolledStudentsForCourses = [];
+    
+        foreach ($displayMyCourses as $course) {
+            $enrolledStudentsForCourses[$course['id']] = $this->TeacherModel->countStudentsForEachCourse($course['id']);
+        }
+    
+        $this->render('userPages/statistics', [
+            'studentsEnrolled' => $studentsEnrolled,
+            'activeCourses' => $activeCourses,
+            'totalEngagements' => $totalEngagements,
+            'displayMyCourses' => $displayMyCourses,
+            'enrolledStudentsForCourses' => $enrolledStudentsForCourses
+        ]);
     }
 
+    public function StudentManagement()
+{
+    
+    $studentsEnrolled = $this->TeacherModel->countStudents();
+    $activeCourses = $this->TeacherModel->activeCourses();
+    $totalEngagements = $this->TeacherModel->countEngagements();
+    $enrolleStatus = $this->TeacherModel->getEnrolleStatus();
 
+    $this->render('userPages/StudentManagement', ['studentsEnrolled' => $studentsEnrolled, 'activeCourses' => $activeCourses, 'totalEngagements' => $totalEngagements, 'enrolleStatus' => $enrolleStatus]);
+
+
+}
 }
 ?>
