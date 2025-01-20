@@ -21,15 +21,14 @@
                 </div>
 
                 <?php if (isset($_SESSION["user_loged_in_role"]) && $_SESSION["user_loged_in_role"] === "student"): ?>
-                        
-                <!-- Search Bar -->
-                <div class="hidden md:block flex-1 max-w-xl mx-4">
-                    <div class="relative">
-                        <input id="search-input" type="text" placeholder="Search for courses..."
-                            class="w-full px-4 py-2 pl-10 pr-8 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-400" oninput="searchCourses(this.value)">
-                        <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                    <!-- Search Bar -->
+                    <div class="hidden md:block flex-1 max-w-xl mx-4">
+                        <div class="relative">
+                            <input id="search-input" type="text" placeholder="Search for courses..."
+                                class="w-full px-4 py-2 pl-10 pr-8 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-400" oninput="searchCourses(this.value)">
+                            <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        </div>
                     </div>
-                </div>
                 <?php endif; ?>
 
                 <!-- Navigation Links -->
@@ -40,6 +39,15 @@
                                 <i class="fa-solid fa-house"></i>
                                 <span>Home</span>
                             </a>
+                            <?php elseif (strpos($_SERVER["REQUEST_URI"], "/Youdemy/Student/CourseDetails?course_id=") === 0): ?>
+                            <a href="/Youdemy/Student" class="hover:text-indigo-200 flex items-center space-x-1">
+                                <i class="fa-solid fa-house"></i>
+                                <span>Home</span>
+                            </a>
+                            <a href="/Youdemy/Student/MyCourses" class="hover:text-indigo-200 flex items-center space-x-1">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>My Courses</span>
+                            </a>
                         <?php else: ?>
                             <a href="/Youdemy/Student/MyCourses" class="hover:text-indigo-200 flex items-center space-x-1">
                                 <i class="fas fa-graduation-cap"></i>
@@ -49,7 +57,8 @@
                     <?php endif; ?>
 
                     <?php if (
-                        empty($_SESSION) || $_SESSION["user_loged_in_role"] != "student" && $_SESSION["user_loged_in_role"] != "teacher"): ?>
+                        empty($_SESSION) || $_SESSION["user_loged_in_role"] != "student" && $_SESSION["user_loged_in_role"] != "teacher" && $_SESSION["user_loged_in_role"] != "admin" 
+                    ): ?>
                         <div class="relative group" id="dropdown">
                             <button class="flex items-center space-x-1 hover:text-indigo-200">
                                 <i class="fas fa-user-circle text-xl"></i>

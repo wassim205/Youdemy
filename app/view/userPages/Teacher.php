@@ -4,9 +4,6 @@ if ($_SERVER['REQUEST_URI'] != "/" && $_SESSION['user_loged_in_role'] != 'teache
 }
 
 ?>
-<pre>
-    <!-- <?php var_dump($displayMyCourses); ?> -->
-</pre>
 
 <!-- Main Content -->
 <main class="max-w-7xl mx-auto px-4 py-8">

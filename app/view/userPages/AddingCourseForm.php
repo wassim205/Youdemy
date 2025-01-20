@@ -46,7 +46,9 @@
                     <label for="category" class="block text-sm font-medium text-gray-700">Category</label>
                     <select id="category" name="category" required
                         class="mt-1 block w-full rounded-md border border-gray-400 p-2 focus:border-indigo-500 focus:ring-indigo-500 bg-white">
-                        <option value="1">PHP</option>
+                        <?php foreach($categories as $category) : ?>
+                        <option value="<?php echo $category['id'] ?>"><?php echo $category['name'] ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
                 <div>

@@ -34,6 +34,36 @@ class Course extends Db
         return $courses;
     }
 
+
+    public function getMyCourses()
+{
+
+    $studentId = $_SESSION['user_loged_in_id'];
+
+    $query = "SELECT 
+                courses.*, 
+                users.first_name, 
+                users.last_name, 
+                categories.name AS category_name,
+                GROUP_CONCAT(tags.name) AS tags
+              FROM enrollments
+              JOIN courses ON enrollments.course_id = courses.id
+              JOIN users ON courses.teacher_id = users.id
+              LEFT JOIN categories ON courses.category_id = categories.id
+              LEFT JOIN course_tags ON courses.id = course_tags.course_id
+              LEFT JOIN tags ON course_tags.tag_id = tags.id
+              WHERE enrollments.student_id = :student_id
+              GROUP BY courses.id";
+
+    $stmt = $this->conn->prepare($query);
+    $stmt->bindParam(':student_id', $studentId, PDO::PARAM_INT);
+    $stmt->execute();
+    $courses = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    return $courses;
+}
+
+
     public function getTotalCourses()
     {
         $query = "SELECT COUNT(*) as total FROM courses";
